@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:service_sphere/Login.dart';
 import 'package:service_sphere/main.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
    Timer(Duration(seconds: 3),() {
      Navigator.pushReplacement(
-         context, MaterialPageRoute(builder: (context) => MyHomePage(),
+         context, MaterialPageRoute(builder: (context) => Login(),
      ));
    });
   }
