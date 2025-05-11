@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:service_sphere/main.dart';
 
 
 class Login extends StatefulWidget{
@@ -102,7 +103,7 @@ class _LoginState extends State<Login> {
                 SizedBox(height: ScreenHeight * 0.04),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle login or any action here
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> MyHomePage()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white24, // Soft translucent white
