@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+
   final List<String> imageUrls = [
     'https://th.bing.com/th/id/OIP.U9DZtGTQ463iWko7J-WnuAHaFn?cb=iwc2&rs=1&pid=ImgDetMain',
     'https://th.bing.com/th/id/OIP.-b8IZVku5z1Uw9faOvOEAwHaFN?cb=iwc2&rs=1&pid=ImgDetMain',
@@ -31,6 +32,8 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final double ScreenHeight = screenSize.height;
     return Scaffold(
       backgroundColor: Color(0xFF2C3E50),
       appBar: AppBar(
@@ -39,15 +42,16 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: ScreenHeight * 0.02),
           AutoScrollingCarousel(imageUrls: imageUrls),
+          SizedBox(height: ScreenHeight * 0.02),
+          MainContent(),
         ],
       ),
     );
   }
 }
 
-// -------------------- Reusable Carousel Class --------------------
 class AutoScrollingCarousel extends StatefulWidget {
   final List<String> imageUrls;
   final double height;
@@ -60,6 +64,7 @@ class AutoScrollingCarousel extends StatefulWidget {
 
   @override
   _AutoScrollingCarouselState createState() => _AutoScrollingCarouselState();
+
 }
 
 class _AutoScrollingCarouselState extends State<AutoScrollingCarousel> {
@@ -121,6 +126,289 @@ class _AutoScrollingCarouselState extends State<AutoScrollingCarousel> {
           );
         },
       ),
+
     );
   }
 }
+class MainContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final double screenHeight = screenSize.height;
+    final double screenWidth = screenSize.width;
+
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Service Hub",
+            style: TextStyle(
+              fontSize: 19,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(height: screenHeight * 0.01),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                // Water Service Card
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    width: screenWidth * 0.40,
+                    height: screenHeight * 0.2,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          // Text column aligned top-left
+                          Align(
+                            alignment: Alignment.topLeft,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Water Service',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                SizedBox(height: 3),
+                                Text(
+                                  'Water Supply, Water Leak Repair, Water Testing',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          // Image positioned bottom right
+                          Positioned(
+                            bottom: -10,
+                            right: -8,
+                            child: Container(
+                              height: 55,
+                              width: 55,
+                              child: Image.asset(
+                                'assets/Images/waterimage.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                // Two stacked empty boxes
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        width: screenWidth * 0.45,
+                        height: screenHeight * 0.09,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              // Text column aligned top-left
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Car Service',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    SizedBox(height: 3),
+                                    Text(
+                                      'Car Repair, Car Wash',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              // Image positioned bottom right
+                              Positioned(
+                                bottom: -6,
+                                right: -4,
+                                child: Container(
+                                  height: 35,
+                                  width: 35,
+                                  child: Image.asset(
+                                    'assets/Images/car Image.png',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        width: screenWidth * 0.45,
+                        height: screenHeight * 0.09,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              // Text column aligned top-left
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Solar Service',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    SizedBox(height: 3),
+                                    Text(
+                                      'Solar Repair, Solar Fix',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black54,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              // Image positioned bottom right
+                              Positioned(
+                                bottom: -6,
+                                right: -4,
+                                child: Container(
+                                  height: 33,
+                                  width: 33,
+                                  child: Image.asset(
+                                    'assets/Images/solar Image.png',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ),
+                    )
+                  ],
+                ),
+
+              ],
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: screenWidth * 0.9,
+              height: screenHeight * 0.1,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    // Text column aligned top-left
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Electric Service',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 3),
+                          Text(
+                            'Electric Repair, Electric Install',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Image positioned bottom right
+                    Positioned(
+                      bottom: -6,
+                      right: -4,
+                      child: Container(
+                        height: 45,
+                        width: 45,
+                        child: Image.asset(
+                          'assets/Images/Electric Image.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+
+      ),
+
+    );
+  }
+}
+
