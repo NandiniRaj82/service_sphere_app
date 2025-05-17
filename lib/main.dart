@@ -72,16 +72,22 @@ class _MyHomePageState extends State<MyHomePage> {
             // Already on Home, do nothing or show a message
           } else if (index == 1) {
 
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> ServicePage()));
+            Navigator.of(context).pushReplacement(
+              PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 300),
+                pageBuilder: (context, animation, secondaryAnimation) => ServicePage(),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(opacity: animation, child: child);
+                },
+              ),
+            );
+
+
           } else if (index == 2) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TrackPage()),
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>  TrackPage()),
             );
           } else if (index == 3) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfilePage()),
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>  ProfilePage()),
             );
           }
         },
